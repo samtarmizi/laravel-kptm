@@ -22,5 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/trainings', [App\Http\Controllers\TrainingController::class, 'index']);
+Route::get('/trainings/create', [App\Http\Controllers\TrainingController::class, 'create']);
+
 
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('auth');

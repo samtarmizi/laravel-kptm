@@ -22,4 +22,11 @@ class TrainingController extends Controller
         // resources/views/trainings/index.blade.php
         return view('trainings.index', compact('trainings'));
     }
+
+    public function create()
+    {
+        // return training create form
+        // resources/views/trainings/create.blade.php
+        return view('trainings.create');
+    }
 }
