@@ -14,6 +14,7 @@
                                 <th>ID</th>
                                 <th>Title</th>
                                 <th>Description</th>
+                                <th>Creator</th>
                                 <th>Created At</th>
                                 <th>Created DateTime</th>
                             </tr>
@@ -24,6 +25,12 @@
                                     <td>{{ $training->id }}</td>
                                     <td>{{ $training->title }}</td>
                                     <td>{{ $training->description }}</td>
+                                    <td>
+                                        {{ $training->user->name }}
+                                        <strong>
+                                            ({{ $training->user->email }})
+                                        </strong>
+                                    </td>
                                     <td>{{ $training->created_at ? $training->created_at->diffForHumans() : 'NO DATA' }}</td>
                                     <td>{{ $training->created_at ?? '-' }}</td>
                                 </tr>
