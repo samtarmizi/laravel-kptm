@@ -23,6 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/trainings', [App\Http\Controllers\TrainingController::class, 'index']);
 Route::get('/trainings/create', [App\Http\Controllers\TrainingController::class, 'create']);
+Route::post('/trainings/create', [App\Http\Controllers\TrainingController::class, 'store']);
 
 
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('auth');

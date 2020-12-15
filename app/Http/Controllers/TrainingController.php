@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Training;
 
 class TrainingController extends Controller
 {
@@ -14,7 +15,7 @@ class TrainingController extends Controller
     public function index()
     {
         // query trainings from trainings table using model
-        $trainings = \App\Models\Training::all();
+        $trainings = Training::all();
 
         // dd($trainings); // dump and die
 
@@ -28,5 +29,22 @@ class TrainingController extends Controller
         // return training create form
         // resources/views/trainings/create.blade.php
         return view('trainings.create');
+    }
+
+    public function store(Request $request)
+    {
+        // store all data from form to trainings table
+        // dd($request->all());
+
+        //Method 1 - POPO - Plain Old PHP Object
+        $training = new Training();
+        $training->title = $request->title;
+        $training->description = $request->description;
+        $training->trainer = $request->trainer;
+        $training->user_id = auth()->user()->id;
+        $training->save();
+
+        // return redirect back
+        return redirect()->back();
     }
 }
