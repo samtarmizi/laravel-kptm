@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Create Training') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('training:store') }}">
                         @csrf
                         <div class="form-group">
                             <label>Title</label>

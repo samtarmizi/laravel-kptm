@@ -48,29 +48,20 @@ class TrainingController extends Controller
         return redirect()->back();
     }
 
-    public function show($id)
+    public function show(Training $training)
     {
-        // find id on table using model
-        $training = Training::find($id);
-
         // return to view
         return view('trainings.show', compact('training'));
     }
 
-    public function edit($id)
+    public function edit(Training $training)
     {
-        // find id on table using model
-        $training = Training::find($id);
-
         // return to view
         return view('trainings.edit', compact('training'));
     }
 
-    public function update($id, Request $request)
+    public function update(Training $training, Request $request)
     {
-        // find id at tables
-        $training = Training::find($id);
-
         // update training with edited attributes
         // Method 2 - Mass Assignment
         $training->update($request->only('title', 'description', 'trainer'));
