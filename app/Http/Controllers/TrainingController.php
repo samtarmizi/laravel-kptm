@@ -15,7 +15,7 @@ class TrainingController extends Controller
     public function index()
     {
         // query trainings from trainings table using model
-        $trainings = Training::all();
+        $trainings = Training::paginate(5);
 
         // dd($trainings); // dump and die
 

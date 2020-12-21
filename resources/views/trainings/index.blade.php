@@ -43,6 +43,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $trainings->links() }}
                 </div>
             </div>
         </div>
