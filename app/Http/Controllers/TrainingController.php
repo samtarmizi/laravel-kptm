@@ -47,4 +47,13 @@ class TrainingController extends Controller
         // return redirect back
         return redirect()->back();
     }
+
+    public function show($id)
+    {
+        // find id on table using model
+        $training = Training::find($id);
+
+        // return to view
+        return view('trainings.show', compact('training'));
+    }
 }
