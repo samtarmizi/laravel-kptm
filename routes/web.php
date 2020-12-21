@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('admin/master/trainings', [App\Http\Controllers\TrainingController::class, 'index'])->name('training:list');
-Route::get('/trainings/create', [App\Http\Controllers\TrainingController::class, 'create']);
+Route::get('/trainings/create', [App\Http\Controllers\TrainingController::class, 'create'])->name('training:create');
 Route::post('/trainings/create', [App\Http\Controllers\TrainingController::class, 'store']);
 
 
