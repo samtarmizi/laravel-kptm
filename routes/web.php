@@ -24,7 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('admin/master/trainings', [App\Http\Controllers\TrainingController::class, 'index'])->name('training:list');
 Route::get('/trainings/create', [App\Http\Controllers\TrainingController::class, 'create'])->name('training:create');
 Route::post('/trainings/create', [App\Http\Controllers\TrainingController::class, 'store']);
-Route::get('/trainings/{id}', [App\Http\Controllers\TrainingController::class, 'show'])->name('training:show');
+Route::get('administrator/trainings/{id}', [App\Http\Controllers\TrainingController::class, 'show'])->name('training:show');
 
 
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('auth');
