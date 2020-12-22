@@ -21,7 +21,8 @@
                     </div>
 
                     @if($training->attachment)
-                        <a href="{{ asset('storage/'.$training->attachment) }}" target="_blank">Open Attachment<a>
+                        {{-- <a href="{{ asset('storage/'.$training->attachment) }}" target="_blank">Open Attachment<a> --}}
+                        <a href="{{ $training->attachment_url }}" target="_blank">Open Attachment<a>
                     @endif
                 </div>
             </div>
