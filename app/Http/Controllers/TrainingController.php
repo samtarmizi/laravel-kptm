@@ -21,7 +21,7 @@ class TrainingController extends Controller
         $user = auth()->user();
         // get user trainings using relationship with pagination 5
         $trainings = $user->trainings()->paginate(5);
-        
+
         // dd($trainings); // dump and die
 
         // return to view with $trainings
@@ -49,8 +49,12 @@ class TrainingController extends Controller
         $training->user_id = auth()->user()->id;
         $training->save();
 
-        // return redirect back
-        return redirect()->back();
+        return redirect()
+            ->route('training:list')
+            ->with([
+                'alert-type' => 'alert-primary',
+                'alert' => 'Your training has been created!'
+            ]);
     }
 
     public function show(Training $training)
@@ -72,13 +76,23 @@ class TrainingController extends Controller
         $training->update($request->only('title', 'description', 'trainer'));
 
         // return to /trainings
-        return redirect()->route('training:list');
+        return redirect()
+            ->route('training:list')
+            ->with([
+                'alert-type' => 'alert-success',
+                'alert' => 'Your training has been updated!'
+            ]);
     }
 
     public function delete(Training $training)
     {
         $training->delete();
 
-        return redirect()->route('training:list');
+        return redirect()
+            ->route('training:list')
+            ->with([
+                'alert-type' => 'alert-danger',
+                'alert' => 'Your training has been deleted!'
+            ]);
     }
 }
