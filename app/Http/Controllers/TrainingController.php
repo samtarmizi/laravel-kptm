@@ -15,8 +15,13 @@ class TrainingController extends Controller
     public function index()
     {
         // query trainings from trainings table using model
-        $trainings = Training::paginate(5);
+        // $trainings = Training::paginate(5);
 
+        // get current authenticate user
+        $user = auth()->user();
+        // get user trainings using relationship with pagination 5
+        $trainings = $user->trainings()->paginate(5);
+        
         // dd($trainings); // dump and die
 
         // return to view with $trainings
