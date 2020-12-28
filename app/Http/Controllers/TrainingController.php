@@ -33,12 +33,12 @@ class TrainingController extends Controller
                 ->paginate(5);
         } else {
             // query trainings from trainings table using model
-            // $trainings = Training::paginate(5);
+            $trainings = Training::latest()->paginate(5);
 
             // get current authenticate user
-            $user = auth()->user();
+            // $user = auth()->user();
             // get user trainings using relationship with pagination 5
-            $trainings = $user->trainings()->paginate(5);
+            // $trainings = $user->trainings()->paginate(5);
         }
         // dd($trainings); // dump and die
 
@@ -111,18 +111,24 @@ class TrainingController extends Controller
 
     public function show(Training $training)
     {
+        $this->authorize('view', $training);
+
         // return to view
         return view('trainings.show', compact('training'));
     }
 
     public function edit(Training $training)
     {
+        $this->authorize('update', $training);
+
         // return to view
         return view('trainings.edit', compact('training'));
     }
 
     public function update(Training $training, Request $request)
     {
+        $this->authorize('update', $training);
+
         // update training with edited attributes
         // Method 2 - Mass Assignment
         $training->update($request->only('title', 'description', 'trainer'));
@@ -138,6 +144,8 @@ class TrainingController extends Controller
 
     public function delete(Training $training)
     {
+        $this->authorize('delete', $training);
+
         $user = auth()->user();
         Notification::send($user, new DeleteTrainingNotification());
 
