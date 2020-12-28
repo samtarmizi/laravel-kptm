@@ -31,3 +31,4 @@ Route::get('/trainings/{training}/delete', [App\Http\Controllers\TrainingControl
 
 
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('auth');
+Route::get('/audits', [App\Http\Controllers\AuditController::class, 'audit'])->middleware('auth');
