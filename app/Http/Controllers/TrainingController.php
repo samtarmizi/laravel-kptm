@@ -15,16 +15,28 @@ class TrainingController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        // query trainings from trainings table using model
-        // $trainings = Training::paginate(5);
+        if ($request->keyword) {
+            $search = $request->keyword;
 
-        // get current authenticate user
-        $user = auth()->user();
-        // get user trainings using relationship with pagination 5
-        $trainings = $user->trainings()->paginate(5);
+            // $trainings = Training::where('title', 'LIKE', '%'.$search.'%')
+            //     ->orWhere('description', 'LIKE', '%'.$search.'%')
+            //     ->paginate(5);
 
+            $trainings = auth()->user()->trainings()->where('title', 'LIKE', '%'.$search.'%')
+                ->orWhere('description', 'LIKE', '%'.$search.'%')
+                ->orderBy('created_at', 'desc')
+                ->paginate(5);
+        } else {
+            // query trainings from trainings table using model
+            // $trainings = Training::paginate(5);
+
+            // get current authenticate user
+            $user = auth()->user();
+            // get user trainings using relationship with pagination 5
+            $trainings = $user->trainings()->paginate(5);
+        }
         // dd($trainings); // dump and die
 
         // return to view with $trainings

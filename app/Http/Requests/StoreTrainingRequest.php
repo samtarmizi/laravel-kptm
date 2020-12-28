@@ -24,9 +24,9 @@ class StoreTrainingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:50',
-            'description' => 'required|min:10',
-            'attachment' => 'required|mimes:pdf'
+            'title' => 'required|min:5',
+            'description' => 'required|min:5'
+            // 'attachment' => 'required|mimes:pdf'
         ];
     }
 
