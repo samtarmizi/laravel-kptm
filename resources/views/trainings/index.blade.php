@@ -62,6 +62,8 @@
                                         @endcan
                                         @can('delete', $training)
                                             <a onclick="return confirm('Are you sure?')" href="{{ route('training:delete', $training) }}" class="btn btn-danger">Delete</a>
+                                            <hr>
+                                            <a onclick="return confirm('Are you sure WANT TO PERMANENTLY DELETE?')" href="{{ route('training:forceDelete', $training) }}" class="btn btn-lg btn-danger">FORCE DELETE</a>
                                         @endcan
                                     </td>
                                 </tr>
