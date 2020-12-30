@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Yadahan\AuthenticationLog\AuthenticationLogable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, AuthenticationLogable;
 
     /**
      * The attributes that are mass assignable.
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function trainings()
     {
         return $this->hasMany('App\Models\Training');
+    }
+
+    public function notifyAuthenticationLogVia()
+    {
+        return ['mail'];
     }
 }
