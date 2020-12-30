@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/test', 'admin.layouts.main');
+
 Route::get('/', function () {
     return view('welcome');
 });
